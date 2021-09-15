@@ -1,0 +1,370 @@
+[{
+    "id": 1,
+    "nombre": "Taller gratuito de cocina saludable",
+    "description": "Sábado 4 de septiembre a las 17hs en el Parque Jaime de Nevares (Villegas y Juan XXIII) <br>Recetas:<br>-Sopa al instante en licuadora<br>-Buddha bowl<br> -Trufas de legumbres <br>Será dictado por la Escuela de Cocineros Patagónicos. Organizada por la Subsecretaría de Hábitos Saludables de la Municipalidad de Neuquén.",
+    "hcolor": "#92C741",
+    "banner": "https://lh4.googleusercontent.com/rENPzO6bli5wFfB3uixDhflpE75S_D7n4BVb_7CSX1xRWnmUVmNxJn-YQLTktFYK2gGwageBEcm6WwTjQRCPZVe_8h7dTRRAHYSxxDCODEwqf9nSKtQ_b1of107OGii6sw=w1276",
+    "terminosCondiciones": "asdfsdff",
+    "fields": [{
+        "field_order": 1,
+        "field_id": "email",
+        "field_name": "email",
+        "field_label": "Email",
+        "field_required": "required",
+        "field_placeholder": "Ingrese su email",
+        "field_type": "email",
+        "field_value": "miemail@mail.com"
+      },
+      {
+        "field_order": 2,
+        "field_id": "nombre",
+        "field_name": "nombre",
+        "field_label": "Nombre",
+        "field_required": "required",
+        "field_placeholder": "Ingrese su nombre",
+        "field_type": "text",
+        "field_value": ""
+      },
+      {
+        "field_order": 3,
+        "field_id": "apellido",
+        "field_name": "apellido",
+        "field_label": "Apellido",
+        "field_required": "required",
+        "field_placeholder": "Ingrese su apellido",
+        "field_type": "text",
+        "field_value": ""
+      },
+      {
+        "field_order": 4,
+        "field_id": "celular",
+        "field_name": "celular",
+        "field_label": "Número de Teléfono Ej:2995193777",
+        "field_required": "required",
+        "field_placeholder": "Ingrese su número de teléfono ",
+        "field_type": "number",
+        "field_value": "",
+        "field_max": "10"
+      },
+      {
+        "field_order": 5,
+        "field_id": "documento",
+        "field_name": "documento",
+        "field_label": "DNI",
+        "field_required": "required",
+        "field_placeholder": "Ingrese su número de DNI",
+        "field_type": "number",
+        "field_value": "",
+        "field_max": "8"
+      },
+      {
+        "field_order": 6,
+        "field_type": "separator",
+        "separator_title": "Título del separador de segmentos.",
+        "separator_description": "Descipción del segmento con algo más?"
+      },
+      {
+        "field_order": 7,
+        "field_id": "fechaCocina",
+        "field_name": "fechaCocina",
+        "field_label": "Fecha de su presentación",
+        "field_placeholder": "Ingrese su fecha",
+        "field_type": "date",
+        "field_value": "",
+        "field_required": "required"
+      },
+      {
+        "field_order": 8,
+        "field_id": "unSelect",
+        "field_label": "Elegir algo",
+        "field_value": "",
+        "field_required": "required",
+        "field_placeholder": "Elija una de las opciones de receta",
+        "field_options": [{
+            "option_label": "Sopa al instante en licuadora"
+          },
+          {
+            "option_label": "Buddha bowl"
+          },
+          {
+            "option_label": "Trufas de legumbres"
+          }
+        ],
+        "field_type": "select"
+      },
+      {
+        "field_order": 9,
+        "field_id": "receta",
+        "field_name": "receta",
+        "field_label": "Escriba una receta en 200 palabras",
+        "field_required": "required",
+        "field_placeholder": "Escriba o complete su receta rápida",
+        "field_type": "textArea",
+        "field_max": "200",
+        "field_value": ""
+      },
+      {
+        "field_order": 10,
+        "field_id": "acepto",
+        "field_name": "acepto",
+        "field_label": "Al hacer click en 'Enviar', se compromete a asistir a la capacitación en el día y horario asignado.",
+        "field_type": "checkbox",
+        "field_value": "checked",
+        "field_required": "required"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "nombre": "ELIJO ACTIVARME-SUBSECRETARIA DE ACTIVIDAD FÍSICA Y VIDA SALUDABLE-MUNICIPALIDAD DE NEUQUÉN-",
+    "description": "FICHA DE INSCRIPCIÓN",
+    "hcolor": "#AE2D42",
+    "banner": "https://lh5.googleusercontent.com/OkVcjSDxiIL84Z7ACLyR4qLHCjPCBlCZQdBpUYiUbIqLb0YpvgO0QOIDCwfmpCwtOH7EvYiyhmYfGJPdvozh0BjOZn7wYgPOcIJUNZl8aAxmw6tPyPgmGyCfNsIsgZcwRg=w775",
+    "terminosCondiciones": "Declaración de responsabilidades <br> Declaro bajo juramento que no padezco afecciones físicas adquiridas ni congénitas, tampoco lesiones, ni alergias que pudieran ocasionar trastornos a mi salud o condiciones de vida, con consecuencia en participar voluntariamente en la presente actividad del programa 'Elijo Activarme'. Asimismo, me he realizado un chequeo médico el cual será renovado cuando me lo solicite la organización, me encuentro en condiciones físicas óptimas para participar en la misma, como así también asumo todos los riesgos asociados con la participación en la presente actividad (caídas, contacto con otros participantes, consecuencias del clima, tránsito vehicular, condiciones del camino y/o cualquier otra clase de riesgos que se pudiera ocasionar) Tomo conocimiento que la Municipalidad de Neuquén  no se responsabiliza por ningún tipo de indemnización, reclamo, costo, daño y/o perjuicio reclamado.<br>Habiendo leído esta declaración y conociendo éstos hechos, libero a la Municipalidad de Neuquén y/o sus empresas controladas o vinculadas y a sus representantes, directores, accionistas de todo y cualquier reclamo o responsabilidad de cualquier tipo que surja de mi participación en la actividad, así́ como de cualquier extravío, robo y/o hurto que pudiera sufrir, o que puedan acontecer con anterioridad, durante el transcurso o posterioridad a la finalización de la actividad del programa 'Elijo Activarme'. Autorizo a la Municipalidad de Neuquén a utilizar, reproducir, distribuir y/o publicar fotografías, películas, videos y/o cualquier otro medio de registración de mi persona tomadas con motivo o en ocasión de la actividad, sin compensación económica alguna a mi favor. <br>Entiendo que la Municipalidad de Neuquén podrá suspender o prorrogar la fecha sin previo aviso, incluso incrementar o reducir la cantidad de inscripciones en función a las necesidades o la disponibilidad técnica o estructural. <br>He , leído detenidamente, comprendido y analizado las condiciones establecidas precedentemente, envío DECLARACIÓN DE RESPONSABILIDADES  en conformidad, constituyendo una cabal e incondicional aceptación a su contenido.<br>",
+    "fields": [{
+        "field_order": 1,
+        "field_id": "email",
+        "field_name": "email",
+        "field_label": "Correo electrónico",
+        "field_required": "required",
+        "field_placeholder": "Ingrese su correo",
+        "field_type": "email",
+        "field_value": "miemail@mail.com"
+      },
+      {
+        "field_order": 2,
+        "field_id": "nombre",
+        "field_name": "nombre",
+        "field_label": "Nombre",
+        "field_required": "required",
+        "field_placeholder": "Ingrese su nombre",
+        "field_type": "text",
+        "field_value": ""
+      },
+      {
+        "field_order": 3,
+        "field_id": "apellido",
+        "field_name": "apellido",
+        "field_label": "Apellido",
+        "field_required": "required",
+        "field_placeholder": "Ingrese su apellido",
+        "field_type": "text",
+        "field_value": ""
+      },
+      {
+        "field_order": 4,
+        "field_id": "celular",
+        "field_name": "celular",
+        "field_label": "Número de Teléfono Ej:2995193777",
+        "field_required": "required",
+        "field_placeholder": "Ingrese su número de teléfono ",
+        "field_type": "number",
+        "field_value": "",
+        "field_max": "10"
+      },
+      {
+        "field_order": 5,
+        "field_id": "documento",
+        "field_name": "documento",
+        "field_label": "DNI",
+        "field_required": "required",
+        "field_placeholder": "Ingrese su número de DNI",
+        "field_type": "number",
+        "field_value": "",
+        "field_max": "8"
+      },
+      {
+        "field_order": 6,
+        "field_id": "fechaNac",
+        "field_label": "Fecha de Nacimiento",
+        "field_placeholder": "Ingrese su fecha de nacimiento",
+        "field_type": "date",
+        "field_value": "",
+        "field_required": "required"
+      },
+      {
+        "field_order": 7,
+        "field_id": "domicilio",
+        "field_name": "domicilio",
+        "field_label": "Domicilio",
+        "field_required": "required",
+        "field_max": "20",
+        "field_placeholder": "Ingrese su domicilio",
+        "field_type": "text",
+        "field_value": ""
+      },
+      {
+        "field_order": 8,
+        "field_id": "barrio",
+        "field_name": "barrio",
+        "field_label": "Barrio",
+        "field_required": "required",
+        "field_max": "20",
+        "field_placeholder": "Ingrese su barrio",
+        "field_type": "text",
+        "field_value": ""
+      },
+      {
+        "field_order": 9,
+        "field_id": "grupo",
+        "field_name": "grupo",
+        "field_label": "Grupo Sanguíneo",
+        "field_required": "required",
+        "field_max": "8",
+        "field_placeholder": "Ingrese su grupo sanguíneo",
+        "field_type": "text",
+        "field_value": ""
+      },
+      {
+        "field_order": 10,
+        "field_id": "unSelect",
+        "field_name": "unSelect",
+        "field_label": "Seleccionar HORARIOS Y LUGARES DE ACTIVIDAD",
+        "field_value": "",
+        "field_required": "required",
+        "field_placeholder": "Elija una de las opciones",
+        "field_options": [{
+            "option_label": "PARQUE JAIME DE NEVARES ( DIAS:LUNES Y MIÉRCOLES-HORARIO: 9:15 A 10:15HS PROF:FIORELA GIAVINO)"
+          },
+          {
+            "option_label": "CENTRO DEPORTIVO PROGRESO (DÍAS: MARTES Y JUEVES - HORARIO: 11 A 12HS PROF:FIORELA GIAVINO)"
+          },
+          {
+            "option_label": "COMISIÓN VECINAL MARIANO MORENO (DÍAS: LUNES Y MIÉRCOLES- HORARIO: 16 A 17HS INSTR. LORENA RODRIGUEZ)"
+          },
+          {
+            "option_label": "PASEO DE LA COSTA (DÍAS: LUNES Y MIÉRCOLES -HORARIO: 16:30 A 17:30HS INSTR.JORGE DA RODDA)"
+          },
+          {
+            "option_label": "ESTANCIA DE DESARROLLO SOCIAL TOMA NORTE (DÍAS: LUNES Y MIÉRCOLESHORARIO: 14 A 15HS LIC. ROBERTO SÁNCHEZ)"
+          },
+          {
+            "option_label": "PARQUE LINEAL SAPERE(DÍAS:LUNES Y MIÉRCOLES - HORARIO:14:30 A 15:30HS INSTR. LORENA RODRIGUEZ)"
+          }
+        ],
+        "field_type": "select"
+      },
+      {
+        "field_order": 11,
+        "field_id": "enfermedad",
+        "field_name": "enfermedad",
+        "field_label": "EN CASO DE ENFERMEDAD REALICE UNA BREVE DESCRIPCIÓN DE LA MISMA",
+        "field_required": "required",
+        "field_placeholder": "Escriba una breve descripción",
+        "field_type": "textArea",
+        "field_max": "200",
+        "field_value": ""
+      },
+      {
+        "field_order": 12,
+        "field_id": "factorSangre",
+        "field_name": "factorSangre",
+        "field_label": "Elija su factor sanguíneo",
+        "field_required": "required",
+        "field_placeholder": "Seleccione su factor",
+        "field_type": "radio",
+        "field_options": [{
+            "id": 1,
+            "option_label": "+"
+          },
+          {
+            "id": 2,
+            "option_label": "-"
+          },
+          {
+            "id": 3,
+            "option_label": "x"
+          }
+        ],
+        "field_value": ""
+      },
+      {
+        "field_order": 13,
+        "field_id": "acepto",
+        "field_name": "acepto",
+        "field_label": "Declaración de responsabilidades.",
+        "field_type": "checkbox",
+        "field_value": "checked",
+        "field_required": "required"
+      },
+      {
+        "field_order": 15,
+        "field_id": "variosCheckboxes",
+        "field_name": "variosCheckboxes",
+        "field_label": "Seleccionar algunas de las opciones múltiples",
+        "field_value": "variosCheckboxes",
+        "field_required": "required",
+        "field_placeholder": "Seleccionar algunas de las opciones múltiples",
+        "field_options": [{
+            "option_label": "opción 1"
+          },
+          {
+            "option_label": "opción 2"
+          },
+          {
+            "option_label": "opción 3"
+          },
+          {
+            "option_label": "opción 4"
+          }
+        ],
+        "field_type": "checkboxes"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "nombre": "EXPOVOCACIONAL 2019 - Encuesta Expositores",
+    "description": "",
+    "hcolor": "#AE2D42",
+    "banner": "https://lh5.googleusercontent.com/OkVcjSDxiIL84Z7ACLyR4qLHCjPCBlCZQdBpUYiUbIqLb0YpvgO0QOIDCwfmpCwtOH7EvYiyhmYfGJPdvozh0BjOZn7wYgPOcIJUNZl8aAxmw6tPyPgmGyCfNsIsgZcwRg=w775",
+    "terminosCondiciones": "Declaración de responsabilidades <br> Declaro bajo juramento que no padezco afecciones físicas adquiridas ni congénitas, tampoco lesiones, ni alergias que pudieran ocasionar trastornos a mi salud o condiciones de vida, con consecuencia en participar voluntariamente en la presente actividad del programa 'Elijo Activarme'. Asimismo, me he realizado un chequeo médico el cual será renovado cuando me lo solicite la organización, me encuentro en condiciones físicas óptimas para participar en la misma, como así también asumo todos los riesgos asociados con la participación en la presente actividad (caídas, contacto con otros participantes, consecuencias del clima, tránsito vehicular, condiciones del camino y/o cualquier otra clase de riesgos que se pudiera ocasionar) Tomo conocimiento que la Municipalidad de Neuquén  no se responsabiliza por ningún tipo de indemnización, reclamo, costo, daño y/o perjuicio reclamado.<br>Habiendo leído esta declaración y conociendo éstos hechos, libero a la Municipalidad de Neuquén y/o sus empresas controladas o vinculadas y a sus representantes, directores, accionistas de todo y cualquier reclamo o responsabilidad de cualquier tipo que surja de mi participación en la actividad, así́ como de cualquier extravío, robo y/o hurto que pudiera sufrir, o que puedan acontecer con anterioridad, durante el transcurso o posterioridad a la finalización de la actividad del programa 'Elijo Activarme'. Autorizo a la Municipalidad de Neuquén a utilizar, reproducir, distribuir y/o publicar fotografías, películas, videos y/o cualquier otro medio de registración de mi persona tomadas con motivo o en ocasión de la actividad, sin compensación económica alguna a mi favor. <br>Entiendo que la Municipalidad de Neuquén podrá suspender o prorrogar la fecha sin previo aviso, incluso incrementar o reducir la cantidad de inscripciones en función a las necesidades o la disponibilidad técnica o estructural. <br>He , leído detenidamente, comprendido y analizado las condiciones establecidas precedentemente, envío DECLARACIÓN DE RESPONSABILIDADES  en conformidad, constituyendo una cabal e incondicional aceptación a su contenido.<br>",
+    "fields": [{
+        "field_order": 1,
+        "field_id": "calificacion",
+        "field_name": "calificacion",
+        "field_label": "¿Comó calificaria la EXPOVOCACIONAL 2019 para su instrucción?",
+        "field_required": "required",
+        "field_placeholder": "Seleccione la calificacion",
+        "field_type": "radio",
+        "field_options": [{
+            "id": 1,
+            "option_label": "1-Muy mala"
+          },
+          {
+            "id": 2,
+            "option_label": "2-Mala"
+          },
+          {
+            "id": 3,
+            "option_label": "3-Regular"
+          },
+          {
+            "id": 4,
+            "option_label": "4-Buena"
+          },
+          {
+            "id": 5,
+            "option_label": "5-Muy buena"
+          }
+        ],
+        "field_value": ""
+      },
+      {
+        "field_order": 6,
+        "field_type": "separator",
+        "separator_title": "¿Cual es su opinion.",
+        "separator_description": "Descipción del segmento con algo más?"
+      },
+      {
+        "field_order": 13,
+        "field_id": "acepto",
+        "field_name": "acepto",
+        "field_label": "Declaración de responsabilidades.",
+        "field_type": "checkbox",
+        "field_value": "checked",
+        "field_required": "required"
+      }
+    ]
+  }
+]
