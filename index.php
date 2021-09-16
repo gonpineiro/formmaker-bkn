@@ -24,6 +24,7 @@ if (isset($_POST) &&  $_POST['token'] === TOKEN) {
             $data = [
                 'idForm' => $_POST['idForm'],
                 'fecha' => date('Y-m-d H:i:s'),
+                'nombre' => $_POST['nombre'],
                 'respuestas' => $_POST["formObject"],
             ];
             try {
