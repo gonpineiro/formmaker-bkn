@@ -25,24 +25,32 @@ class FormController
     /* Busca un form por json*/
     public static function getJson($id)
     {
-        $string = file_get_contents(ROOT_PATH . '.preguntas.json');
+        $path = ROOT_PATH . "formularios";
+        $formularios = scandir($path);
+        unset($formularios[0]);
+        unset($formularios[1]);
+
+        $string = file_get_contents("$path/$id.json");
         $json = json_decode($string, true);
-        $json = array_filter($json, function ($form) use ($id) {
-            return $form['id'] == $id;
-        });
-        return array_values($json)[0];
+
+        return $json;
     }
 
     /* Busca ids de los json*/
     public static function getJsonForms()
     {
-        $string = file_get_contents(ROOT_PATH . '.preguntas.json');
-        $json = json_decode($string, true);
+        $formularios = scandir(ROOT_PATH . 'formularios');
+        unset($formularios[0]);
+        unset($formularios[1]);
+
         $forms = [];
-        foreach ($json as $item) {
+        foreach ($formularios as $form) {
+            $path = ROOT_PATH . "formularios/$form";
+            $string = file_get_contents($path);
+            $json = json_decode($string, true);
             array_push($forms, [
-                'id' => $item['id'],
-                'nombre' => $item['nombre']
+                'id' => $json['id'],
+                'nombre' => $json['nombre']
             ]);
         }
         return $forms;
