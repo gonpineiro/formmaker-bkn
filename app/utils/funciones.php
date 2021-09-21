@@ -339,12 +339,12 @@ function cargarJsonFile($idForm, $msg): void
     $path = RES_PATH . $idForm . "/";
     if (!file_exists($path)) mkdir($path, 0755, true);
 
-    if (is_dir($path)) {
+    /* if (is_dir($path)) {
         $gestor = scandir($path);
         $id = count($gestor) - 1;
-    }
+    } */
 
-    $file = fopen($path . $id . ".json", 'a') or die("Error creando archivo");
+    $file = fopen($path . uniqid() . ".json", 'a') or die("Error creando archivo");
     fwrite($file, $msg) or die("Error escribiendo en el archivo");
     fclose($file);
 }
