@@ -262,8 +262,8 @@
     },
     {
       "field_order": 13,
-      "field_id": "calificacion",
-      "field_name": "calificacion",
+      "field_id": "calificacionDos",
+      "field_name": "calificacionDos",
       "field_label": "¿Cómo calificaría la publicidad realizada por la organización antes de la EXPOVOCACIONAL 2021? ",
       "field_value": "",
       "field_required": "required",
