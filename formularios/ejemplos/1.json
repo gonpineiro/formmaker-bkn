@@ -52,7 +52,7 @@
      {
       "field_order": 3,
       "field_type": "separator",
-      "separator_title": "¿Cuál es su opinion con respecto al asesoramiento por parte de la organización del evento en...",
+      "separator_title": "¿Cuál es su opinión con respecto al asesoramiento por parte de la organización del evento en...",
       "separator_description": "Aspectos a considerar: "
     },
     {
@@ -423,7 +423,7 @@
       "field_order": 22,
       "field_id": "acepto",
       "field_name": "acepto",
-      "field_label": "Complete mi formulario",
+      "field_label": "Completé mi formulario",
       "field_type": "checkbox",
       "field_value": "checked",
       "field_required": "required"
