@@ -334,15 +334,20 @@ function verFormatoArchivo(string $string): string
     return substr($string, $indice);
 }
 
-function cargarJsonFile($idForm, $msg): void
+function cargarFormularioJson($msg): void
+{
+    $path = FORM_PATH . "/";
+    if (!file_exists($path)) mkdir($path, 0755, true);
+
+    $file = fopen($path . uniqid() . ".json", 'a') or die("Error creando archivo");
+    fwrite($file, $msg) or die("Error escribiendo en el archivo");
+    fclose($file);
+}
+
+function cargarRespuestaJson($idForm, $msg): void
 {
     $path = RES_PATH . $idForm . "/";
     if (!file_exists($path)) mkdir($path, 0755, true);
-
-    /* if (is_dir($path)) {
-        $gestor = scandir($path);
-        $id = count($gestor) - 1;
-    } */
 
     $file = fopen($path . uniqid() . ".json", 'a') or die("Error creando archivo");
     fwrite($file, $msg) or die("Error escribiendo en el archivo");

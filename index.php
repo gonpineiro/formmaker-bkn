@@ -19,7 +19,6 @@ if (isset($_POST) &&  $_POST['token'] === TOKEN) {
 
     /* Respuesta de un formulario */
     if (isset($_POST) && $_POST['type'] === 'respuesta') {
-
         if ($_POST['idForm'] != null) {
             $data = [
                 'idForm' => $_POST['idForm'],
@@ -28,7 +27,8 @@ if (isset($_POST) &&  $_POST['token'] === TOKEN) {
                 'respuestas' => $_POST["formObject"],
             ];
             try {
-                cargarJsonFile($_POST['idForm'], json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+                $$json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+                cargarRespuestaJson($_POST['idForm'],  $json, RES_PATH);
                 $msg = 'El formulario se envió correctamente';
             } catch (\Throwable $th) {
                 $msg = 'Hubo un problema con el envío del formulario';
@@ -36,25 +36,10 @@ if (isset($_POST) &&  $_POST['token'] === TOKEN) {
         } else {
             $msg = 'Hubo un problema con el envío del formulario';
         }
-
         echo json_encode(['msg' => $msg]);
     }
 
-    /* Consultar un formulario */
-    /* if (isset($_POST) && $_POST['type'] === 'get') {
-        $formulario = $formController->get(['id' => $_POST['id']]);
-        if ($formulario) {
-            $formulario['error'] = null;
-            echo json_encode($formulario, true);
-        } else {
-            $error = [
-                'error' =>  'Recurso no encontrado',
-                'idForm' => $_POST['id'],
-            ];
-            echo json_encode($error, true);
-        }
-    } */
-
+    /* Obtenemos un formulario */
     if (isset($_POST) && $_POST['type'] === 'get') {
         $formulario = $formController->getJson($_POST['id']);
         if ($formulario) {
@@ -68,7 +53,8 @@ if (isset($_POST) &&  $_POST['token'] === TOKEN) {
             echo json_encode($error, true);
         }
     }
-    
+
+    /* Obtenemos todos los formularios */
     if (isset($_POST) && $_POST['type'] === 'get-all-form') {
         $forms = $formController->getJsonForms();
         if ($forms) {
