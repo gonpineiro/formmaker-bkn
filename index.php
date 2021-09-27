@@ -17,6 +17,21 @@ if (isset($_POST) &&  $_POST['token'] === TOKEN) {
         echo json_encode($_POST['formulario'], true);
     }
 
+    /* Creando formulario */
+    if (isset($_POST) && $_POST['type'] === 'post-form-json') {
+        unset($_POST['token']);
+        unset($_POST['type']);
+        try {
+            $json = json_encode($_POST, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            cargarFormularioJson($json);
+            $msg = 'El formulario se creo correctamente';
+        } catch (\Throwable $th) {
+            $msg = 'Hubo un problema en la creacion del formulario';
+        }
+        echo json_encode(['msg' => $msg]);
+        exit();
+    }
+
     /* Respuesta de un formulario */
     if (isset($_POST) && $_POST['type'] === 'respuesta') {
         if ($_POST['idForm'] != null) {
@@ -27,8 +42,8 @@ if (isset($_POST) &&  $_POST['token'] === TOKEN) {
                 'respuestas' => $_POST["formObject"],
             ];
             try {
-                $$json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-                cargarRespuestaJson($_POST['idForm'],  $json, RES_PATH);
+                $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+                cargarRespuestaJson($_POST['idForm'],  $json);
                 $msg = 'El formulario se envió correctamente';
             } catch (\Throwable $th) {
                 $msg = 'Hubo un problema con el envío del formulario';
@@ -37,6 +52,7 @@ if (isset($_POST) &&  $_POST['token'] === TOKEN) {
             $msg = 'Hubo un problema con el envío del formulario';
         }
         echo json_encode(['msg' => $msg]);
+        exit();
     }
 
     /* Obtenemos un formulario */

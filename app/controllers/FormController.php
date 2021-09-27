@@ -46,10 +46,11 @@ class FormController
         $forms = [];
         foreach ($formularios as $form) {
             $path = ROOT_PATH . "formularios/$form";
+            $id = pathinfo($path, PATHINFO_FILENAME);
             $string = file_get_contents($path);
             $json = json_decode($string, true);
             array_push($forms, [
-                'id' => $json['id'],
+                'id' => $id,
                 'nombre' => $json['nombre']
             ]);
         }
