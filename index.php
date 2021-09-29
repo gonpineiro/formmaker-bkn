@@ -28,7 +28,7 @@ if (isset($_POST) &&  $_POST['token'] === TOKEN) {
         } catch (\Throwable $th) {
             $msg = 'Hubo un problema en la creacion del formulario';
         }
-        echo json_encode(['msg' => $msg]);
+        echo json_encode(['msg' => $msg, 'error' => null]);
         exit();
     }
 
