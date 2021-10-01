@@ -51,7 +51,8 @@ class FormController
             $json = json_decode($string, true);
             array_push($forms, [
                 'id' => $id,
-                'nombre' => $json['nombre']
+                'nombre' => $json['nombre'],
+                'banner' => $json['banner']
             ]);
         }
         return $forms;
