@@ -4,11 +4,12 @@ if (isset($_POST) && $_POST['type'] === 'post-form-json') {
     unset($_POST['type']);
     try {
         $json = json_encode($_POST, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-        cargarFormularioJson($json);
+        $uuid = cargarFormularioJson($json);
         $msg = 'El formulario se creo correctamente';
     } catch (\Throwable $th) {
         $msg = 'Hubo un problema en la creacion del formulario';
+        $uuid = null;
     }
-    echo json_encode(['msg' => $msg, 'error' => null]);
+    echo json_encode(['msg' => $msg, 'uuid' => $uuid, 'error' => null]);
     exit();
 }
