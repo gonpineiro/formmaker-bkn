@@ -5,7 +5,7 @@ localhost/github/formmaker-bkn/getRespuestas.php?formulario=2&nombreForm=encuest
 
 if (!empty($_GET['formulario']) && !empty($_GET['nombreForm'])) {
     $path = "./respuestas/";
-    $fecha = date("Y-m-d-H-i-s");
+    $fecha = date("Y-m-d H_i_s");
     $carpeta = $path . $_GET['formulario'];
     $nombreForm = $_GET['nombreForm'];
     // nombre archivo json
