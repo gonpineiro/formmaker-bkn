@@ -5,7 +5,7 @@ if (isset($_POST) && $_POST['type'] === 'post-form-json') {
     try {
         $_POST['fecha'] = date('Y-m-d H:i:s');
         $uuid = uniqid();
-        $_POST['url'] = APP_URL_PROD . '?idForm=' . $uuid;
+        $_POST['url'] = APP_URL . '?idForm=' . $uuid;
 
         $json = json_encode($_POST, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         cargarFormularioJson($json, $uuid);

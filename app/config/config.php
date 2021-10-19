@@ -25,10 +25,10 @@ switch (ENV) {
         define('APP_URL', $_ENV['APP_URL_LOCAL']);
         break;
     case 'local':
-        define('APP_URL_REPLICA', $_ENV['APP_URL_REPLICA']);
+        define('APP_URL', $_ENV['APP_URL_REPLICA']);
         break;
     case 'local':
-        define('APP_URL_PROD', $_ENV['APP_URL_PROD']);
+        define('APP_URL', $_ENV['APP_URL_PROD']);
         break;
 }
 
