@@ -37,10 +37,8 @@ function verificarSesion()
     }
 }
 
-function enviarMailApi($address, $idSolicitud)
+function enviarMailApi($address, $body, $subject)
 {
-    $body = "<p>Su solicitud (Nº " . $idSolicitud . ") para 'Registro de profesionales y afines a la actividad física' fue recibida. En el transcurso de 48hs hábiles nos comunicaremos con usted. </p><p>Cualquier duda o consulta pod&eacute;s enviarnos un email a: <a href='mailto:fiscalizaciondeportiva@muninqn.gov.ar' target='_blank'>fiscalizaciondeportiva@muninqn.gov.ar</a></p><p>Subsecretaria de deporte y juventud</p><p>Municipalidad de Neuquén</p>";
-    $subject = "Registro de profesionales y afines a la actividad física";
     $post_fields = json_encode(['address' => $address, 'subject' => $subject, 'htmlBody' => $body]);
 
     $uri = "https://weblogin.muninqn.gov.ar/api/Mail";
@@ -48,6 +46,7 @@ function enviarMailApi($address, $idSolicitud)
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     $result = curl_exec($ch);
     curl_close($ch);
 
@@ -58,7 +57,7 @@ function enviarMailRechazado($address, $solicitante, $observaciones, $idsolicitu
 {
     $body = "<p>Estimado/a " . $solicitante . ", su solicitud (Nº $idsolicitud) para Libreta Sanitaria fue rechazada.</p>
             <p>Motivos: " . $observaciones . "</p>
-             <p>Le sugerimos mirar las instrucciones en este <a href='https://www.neuquencapital.gov.ar/wp-content/uploads/2021/05/LIBRETA-SANITARIA-.pdf' target='_blank'>instructivo</a>.</p>
+            <p>Le sugerimos mirar las instrucciones en este <a href='https://www.neuquencapital.gov.ar/wp-content/uploads/2021/05/LIBRETA-SANITARIA-.pdf' target='_blank'>instructivo</a>.</p>
             <p>Cualquier duda o consulta pod&eacute;s enviarnos un email a: <a href='mailto:carnetma@muninqn.gob.ar' target='_blank'>carnetma@muninqn.gob.ar</a></p><p>Direcci&oacute;n Municipal de Calidad Alimentaria</p><p>Municipalidad de Neuquén</p>";
 
 
@@ -334,12 +333,10 @@ function verFormatoArchivo(string $string): string
     return substr($string, $indice);
 }
 
-function cargarFormularioJson($msg): string
+function cargarFormularioJson($msg, $uuid): string
 {
     $path = FORM_PATH . "/";
     if (!file_exists($path)) mkdir($path, 0755, true);
-
-    $uuid = uniqid();
 
     $file = fopen($path . $uuid . ".json", 'a') or die("Error creando archivo");
     fwrite($file, $msg) or die("Error escribiendo en el archivo");

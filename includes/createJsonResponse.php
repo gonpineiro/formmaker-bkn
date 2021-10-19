@@ -1,22 +1,43 @@
 <?php
+
 if (isset($_POST) && $_POST['type'] === 'respuesta') {
+    $succesMsg = 'El formulario se envió correctamente';
+    $errorMsg = 'Hubo un problema con el envío del formulario';
     if ($_POST['idForm'] != null) {
+        $idForm = $_POST['idForm'];
+        $path = ROOT_PATH . "formularios\\$idForm.json";
+        $form = json_decode(file_get_contents($path), true);
+
+        $sendMail = "Correo NO enviado | No se configuro email o mensaje en el formulario";
+        if (isset($_POST["formObject"]['Email']) && isset($form['bodyEmail'])) {
+            $nombreForm = $form['nombre'];
+            $email = $_POST["formObject"]['Email'];
+            $result = enviarMailApi($email, $form['bodyEmail'], $nombreForm);
+            if ($result['error'] == null) {
+                $sendMail = 'Correo enviado';
+            } else {
+                $sendMail = "Correo NO enviado | " . $result['error'];
+            }
+        }
+
         $data = [
-            'idForm' => $_POST['idForm'],
+            'sendEmail' => $sendMail,
+            'idForm' => $idForm,
             'fecha' => date('Y-m-d H:i:s'),
             'nombre' => $_POST['nombre'],
             'respuestas' => $_POST["formObject"],
         ];
         try {
             $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-            cargarRespuestaJson($_POST['idForm'],  $json);
-            $msg = 'El formulario se envió correctamente';
-        } catch (\Throwable $th) {
-            $msg = 'Hubo un problema con el envío del formulario';
+            cargarRespuestaJson($idForm,  $json);
+            $msg = $succesMsg;
+        } catch (\Throwable $th) {            
+            $msg = $errorMsg;
         }
     } else {
-        $msg = 'Hubo un problema con el envío del formulario';
+        $msg = $errorMsg;
     }
+
     echo json_encode(['msg' => $msg]);
     exit();
 }
