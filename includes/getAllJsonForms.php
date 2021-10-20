@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST) && $_POST['type'] === 'get-all-form') {
+if (isset($_POST['type']) && $_POST['type'] === 'get-all-form') {
     $forms = $formController->getJsonForms();
     if ($forms) {
         $forms['error'] = null;

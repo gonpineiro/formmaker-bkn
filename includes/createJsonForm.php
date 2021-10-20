@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST) && $_POST['type'] === 'post-form-json') {
+if (isset($_POST['type']) && $_POST['type'] === 'post-form-json') {
     unset($_POST['token']);
     unset($_POST['type']);
     try {

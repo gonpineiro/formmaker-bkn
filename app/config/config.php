@@ -1,6 +1,6 @@
 <?php
 session_status() === PHP_SESSION_ACTIVE ?: session_start();
-
+ini_set('error_log', '/tmp/php.log');
 header('Content-Type: text/html; charset=utf-8');
 header("Cache-Control: no-cache, must-revalidate ");
 
@@ -31,7 +31,6 @@ switch (ENV) {
         define('APP_URL', $_ENV['APP_URL_PROD']);
         break;
 }
-
 /* AppID */
 define('APPID', PROD ? 53 : 55);
 

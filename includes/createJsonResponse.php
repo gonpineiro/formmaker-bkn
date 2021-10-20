@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST) && $_POST['type'] === 'respuesta') {
+if (isset($_POST['type']) && $_POST['type'] === 'respuesta') {
     $succesMsg = 'El formulario se envió correctamente';
     $errorMsg = 'Hubo un problema con el envío del formulario';
     if ($_POST['idForm'] != null) {
