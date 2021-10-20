@@ -9,9 +9,9 @@ if (isset($_POST) && $_POST['type'] === 'respuesta') {
         $form = json_decode(file_get_contents($path), true);
 
         $sendMail = "Correo NO enviado | No se configuro email o mensaje en el formulario";
-        if (isset($_POST["formObject"]['Email']) && isset($form['bodyEmail'])) {
+        if (isset($_POST["formObject"]['Mail']) && isset($form['bodyEmail'])) {
             $nombreForm = $form['nombre'];
-            $email = $_POST["formObject"]['Email'];
+            $email = $_POST["formObject"]['Mail'];
             $result = enviarMailApi($email, $form['bodyEmail'], $nombreForm);
             if ($result['error'] == null) {
                 $sendMail = 'Correo enviado';
