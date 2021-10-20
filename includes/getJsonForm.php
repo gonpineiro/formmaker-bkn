@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST) && $_POST['type'] === 'get') {
+if (isset($_POST['type']) && $_POST['type'] === 'get') {
     $formulario = $formController->getJson($_POST['id']);
     if ($formulario) {
         $formulario['error'] = null;

@@ -53,7 +53,6 @@ class FormController
                 'id' => $id,
                 'estado' => $json['estado'],
                 'nombre' => $json['nombre'],
-                'banner' => $json['banner']
             ]);
         }
         return $forms;
