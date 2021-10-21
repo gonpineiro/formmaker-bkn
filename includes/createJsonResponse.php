@@ -20,8 +20,8 @@ if (isset($_POST['type']) && $_POST['type'] === 'respuesta') {
             }
         }
 
+        $_POST["formObject"]['sendEmail'] = $sendMail;
         $data = [
-            'sendEmail' => $sendMail,
             'idForm' => $idForm,
             'fecha' => date('Y-m-d H:i:s'),
             'nombre' => $_POST['nombre'],
@@ -31,7 +31,7 @@ if (isset($_POST['type']) && $_POST['type'] === 'respuesta') {
             $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
             cargarRespuestaJson($idForm,  $json);
             $msg = $succesMsg;
-        } catch (\Throwable $th) {            
+        } catch (\Throwable $th) {
             $msg = $errorMsg;
         }
     } else {
