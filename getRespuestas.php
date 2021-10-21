@@ -86,8 +86,8 @@ function descargarCsv($csv_filename, $json_filename)
 function borrarArchivo($archivo)
 {
     if (!unlink($archivo)) {
-        echo ("$archivo No se pudo borrar");
+        //echo ("$archivo No se pudo borrar");
     } else {
-        echo ("$archivo se borró");
+        //echo ("$archivo se borró");
     }
 }
