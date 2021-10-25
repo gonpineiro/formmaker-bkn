@@ -45,14 +45,25 @@ class FormController
 
         $forms = [];
         foreach ($formularios as $form) {
-            $path = ROOT_PATH . "formularios/$form";
-            $id = pathinfo($path, PATHINFO_FILENAME);
-            $string = file_get_contents($path);
+            $formPath = ROOT_PATH . "formularios/$form";
+            $id = pathinfo($formPath, PATHINFO_FILENAME);
+            $string = file_get_contents($formPath);
             $json = json_decode($string, true);
+
+            $respuestasPath = ROOT_PATH . "respuestas/$id";
+            $respuestas = scandir($respuestasPath);
+            $respuestasCount = 0;
+            if ($respuestas) {
+                unset($respuestas[0]);
+                unset($respuestas[1]);
+                $respuestasCount = count($respuestas);
+            }
+
             array_push($forms, [
                 'id' => $id,
-                'estado' => $json['estado'],
                 'nombre' => $json['nombre'],
+                'estado' => $json['estado'],
+                'respuestas' => $respuestasCount
             ]);
         }
         return $forms;

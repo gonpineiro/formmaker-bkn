@@ -1,6 +1,6 @@
 <?php
 session_status() === PHP_SESSION_ACTIVE ?: session_start();
-ini_set('error_log', '/tmp/php.log');
+error_reporting(0);
 header('Content-Type: text/html; charset=utf-8');
 header("Cache-Control: no-cache, must-revalidate ");
 
