@@ -10,4 +10,5 @@
 
 ```
 
-tenga en cuenta que el token valido debera sacarlo por su cuenta
+tenga en cuenta que el token valido debera sacarlo por su cuenta 
+NOta: EL token es una variable, cualquier cadena de string, que debe ser igual en el baken y el front, una pequeña llave de seguridad. Lo importante que se respeten en ambos.
