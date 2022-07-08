@@ -49,7 +49,10 @@ function jsonACSV($json_filename, $csv_filename)
     $data = json_decode($json, true);
     $fp = fopen($csv_filename, 'w');
     $header = false;
+    //print_r($data);
     foreach ($data as $row) {
+        //print_r($row);
+        $row = limpiarCommas($row);
         if (empty($header)) {
             $header = array_keys($row);
             fputcsv($fp, $header);
@@ -61,9 +64,24 @@ function jsonACSV($json_filename, $csv_filename)
     return;
 }
 
+function limpiarCommas($unaFila){
+    foreach ($unaFila as $key => $unValor) {
+        /*echo "\n\n";
+        echo "Valor sin modificar: ".$unValor;
+        echo "\n";
+        echo "Valor sin modificar: ".$unaFila[$key];
+        echo "\n\n";*/
+        $unValor = str_replace(',', ' ', $unValor);
+        $unaFila[$key] = $unValor;
+        /*echo "Valor quitando commas: ".$unValor;
+        echo "\n";
+        echo "Valor quitando commas: ".$unaFila[$key];*/
+    }
+    return $unaFila;
+}
+
 function descargarCsv($csv_filename, $json_filename)
 {
-
     if (file_exists($csv_filename)) {
         $fileName = basename($csv_filename);
         $fileSize = filesize($csv_filename);
@@ -73,6 +91,9 @@ function descargarCsv($csv_filename, $json_filename)
         header("Content-Type: application/stream");
         header("Content-Length: " . $fileSize);
         header("Content-Disposition: attachment; filename=" . $fileName);
+        //header('Content-Encoding: UTF-8');
+        //header('Content-type: text/csv; charset=UTF-8');
+        echo "\xEF\xBB\xBF";
 
         // Output file.
         readfile($csv_filename);
