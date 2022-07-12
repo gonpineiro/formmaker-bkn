@@ -53,6 +53,27 @@ function enviarMailApi($address, $body, $subject)
     return json_decode($result, true);
 }
 
+function enviarMailCreacionDeFormulario($address, $body, $subject)
+{
+    /*$body = "<p>Estimado/a " . $solicitante . ", su solicitud (Nº $idsolicitud) para Libreta Sanitaria fue rechazada.</p>
+            <p>Motivos: " . $observaciones . "</p>
+            <p>Le sugerimos mirar las instrucciones en este <a href='https://www.neuquencapital.gov.ar/wp-content/uploads/2021/05/LIBRETA-SANITARIA-.pdf' target='_blank'>instructivo</a>.</p>
+            <p>Cualquier duda o consulta pod&eacute;s enviarnos un email a: <a href='mailto:carnetma@muninqn.gob.ar' target='_blank'>carnetma@muninqn.gob.ar</a></p><p>Direcci&oacute;n Municipal de Calidad Alimentaria</p><p>Municipalidad de Neuquén</p>";*/
+
+    $post_fields = json_encode(['address' => $address, 'subject' => $subject, 'htmlBody' => $body]);
+
+    $uri = "https://weblogin.muninqn.gov.ar/api/Mail";
+    $ch = curl_init($uri);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    $result = curl_exec($ch);
+    curl_close($ch);
+
+    return json_decode($result, true);
+}
+
 function enviarMailRechazado($address, $solicitante, $observaciones, $idsolicitud)
 {
     $body = "<p>Estimado/a " . $solicitante . ", su solicitud (Nº $idsolicitud) para Libreta Sanitaria fue rechazada.</p>

@@ -37,7 +37,7 @@ class FormController
     }
 
     /* Busca ids de los json*/
-    public static function getJsonForms()
+    public static function getJsonForms($dni = null)
     {
         $formularios = scandir(ROOT_PATH . 'formularios');
         unset($formularios[0]);
@@ -45,26 +45,38 @@ class FormController
 
         $forms = [];
         foreach ($formularios as $form) {
+            $agregarForm = true;
+
             $formPath = ROOT_PATH . "formularios/$form";
             $id = pathinfo($formPath, PATHINFO_FILENAME);
             $string = file_get_contents($formPath);
             $json = json_decode($string, true);
 
-            $respuestasPath = ROOT_PATH . "respuestas/$id";
-            $respuestas = scandir($respuestasPath);
-            $respuestasCount = 0;
-            if ($respuestas) {
-                unset($respuestas[0]);
-                unset($respuestas[1]);
-                $respuestasCount = count($respuestas);
-            }
+            /*
+            print_r($json);
+            echo $dni;
+            echo $json['dni'];
+            */
 
-            array_push($forms, [
-                'id' => $id,
-                'nombre' => $json['nombre'],
-                'estado' => $json['estado'],
-                'respuestas' => $respuestasCount
-            ]);
+            ($dni != null && (isset($json['dni']) && $dni != $json['dni']) ? $agregarForm = false : $agregarForm = true );
+
+            if($agregarForm){
+                $respuestasPath = ROOT_PATH . "respuestas/$id";
+                $respuestas = scandir($respuestasPath);
+                $respuestasCount = 0;
+                if ($respuestas) {
+                    unset($respuestas[0]);
+                    unset($respuestas[1]);
+                    $respuestasCount = count($respuestas);
+                }
+    
+                array_push($forms, [
+                    'id' => $id,
+                    'nombre' => $json['nombre'],
+                    'estado' => $json['estado'],
+                    'respuestas' => $respuestasCount
+                ]);
+            }
         }
         return $forms;
     }
