@@ -57,10 +57,40 @@ class FormController
             echo $dni;
             echo $json['dni'];
             */
+            $agregarForm = true;
+            if ($dni != null) {
+                if (isset($json['dni'])) {
+                    if (is_array($json['dni'])) {
+                        $encontroElDni = false;
+                        $contador = 0;
+                        do {
+                            /*echo "dni: ".$dni;
+                            echo "dni json: " . $json['dni'][$contador];
+                            echo "\n\n";*/
+                            if ($dni != $json['dni'][$contador]) {
+                                $agregarForm = false;
+                            } else {
+                                $agregarForm = true;
+                                $encontroElDni = true;
+                            }
+                            $contador++;
+                        } while (!$encontroElDni && $contador < count($json['dni']));
 
-            ($dni != null && (isset($json['dni']) && $dni != $json['dni']) ? $agregarForm = false : $agregarForm = true );
+                        //foreach ($json['dni'] as $key => $unDni) {
+                        //}
+                    } else {
+                        if ($dni != $json['dni']) {
+                            $agregarForm = false;
+                        }
+                    }
+                }
+            }
+            /*echo "agrega el form: ".($agregarForm ? "Si" : "No");
+                echo "\n\n";*/
 
-            if($agregarForm){
+            //($dni != null && (isset($json['dni']) && $dni != $json['dni']) ? $agregarForm = false : $agregarForm = true );
+
+            if ($agregarForm) {
                 $respuestasPath = ROOT_PATH . "respuestas/$id";
                 $respuestas = scandir($respuestasPath);
                 $respuestasCount = 0;
@@ -69,7 +99,7 @@ class FormController
                     unset($respuestas[1]);
                     $respuestasCount = count($respuestas);
                 }
-    
+
                 array_push($forms, [
                     'id' => $id,
                     'nombre' => $json['nombre'],
