@@ -28,7 +28,8 @@ if (isset($_POST['type']) && $_POST['type'] === 'respuesta') {
             'respuestas' => $_POST["formObject"],
         ];
         try {
-            $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            //agregado para evitar que las ñ rompan el json_encode
+            $json = json_encode(utf8ize($data), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
             cargarRespuestaJson($idForm,  $json);
             $msg = $succesMsg;
         } catch (\Throwable $th) {

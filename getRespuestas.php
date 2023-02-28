@@ -7,7 +7,7 @@ if (!empty($_GET['formulario']) && !empty($_GET['nombreForm'])) {
     $path = "./respuestas/";
     $fecha = date("Y-m-d H_i_s");
     $carpeta = $path . $_GET['formulario'];
-    $nombreForm = $_GET['nombreForm'];
+    $nombreForm = limpiarCaracteresInvalidosWindows($_GET['nombreForm']);
     // nombre archivo json
     $json_filename = "resultados_" . $nombreForm . "-" . $fecha  . '.json';
     // nombre archivo csv
@@ -26,6 +26,8 @@ function getDatosDeRespuestas($carpeta, $json_filename)
     foreach (glob($carpeta . "/*.json") as $filename) {
         $respuestasJson[] = file_get_contents($filename);
     }
+    // print_r($respuestasJson);
+    // die;
     // obtengo solamente los "resultados" dentro de cada json de respuesta
     foreach ($respuestasJson as $unaRespuesta) {
         $json = json_decode($unaRespuesta);
@@ -72,12 +74,23 @@ function limpiarCommas($unaFila){
         echo "Valor sin modificar: ".$unaFila[$key];
         echo "\n\n";*/
         $unValor = str_replace(',', ' ', $unValor);
+        //$unValor = str_replace('.', ' ', $unValor);
+        $unValor = str_replace('"', ' ', $unValor);
+        //$unValor = str_replace('\\n', ' ', $unValor);
+        $unValor = preg_replace('~[\r\n]~', '', $unValor); //para quitar saltos de linea, no se si quita dobles saltos de linea
+        //$unValor = str_replace('\\n', ' ', $unValor);
         $unaFila[$key] = $unValor;
         /*echo "Valor quitando commas: ".$unValor;
         echo "\n";
         echo "Valor quitando commas: ".$unaFila[$key];*/
     }
     return $unaFila;
+}
+
+function limpiarCaracteresInvalidosWindows($nombreArchivo){
+    //Windows no acepta: \ / : * ? " < > |
+    $nombreArchivoFinal = str_replace(['\\', '/', ':', '*', '?', '"', '<', '>', '|', ','], ' ', $nombreArchivo);
+    return $nombreArchivoFinal;
 }
 
 function descargarCsv($csv_filename, $json_filename)

@@ -39,7 +39,7 @@ function verificarSesion()
 
 function enviarMailApi($address, $body, $subject)
 {
-    $post_fields = json_encode(['address' => $address, 'subject' => $subject, 'htmlBody' => $body]);
+    $post_fields = json_encode(utf8ize(['address' => $address, 'subject' => $subject, 'htmlBody' => $body]));
 
     $uri = "https://weblogin.muninqn.gov.ar/api/Mail";
     $ch = curl_init($uri);
@@ -60,7 +60,7 @@ function enviarMailCreacionDeFormulario($address, $body, $subject)
             <p>Le sugerimos mirar las instrucciones en este <a href='https://www.neuquencapital.gov.ar/wp-content/uploads/2021/05/LIBRETA-SANITARIA-.pdf' target='_blank'>instructivo</a>.</p>
             <p>Cualquier duda o consulta pod&eacute;s enviarnos un email a: <a href='mailto:carnetma@muninqn.gob.ar' target='_blank'>carnetma@muninqn.gob.ar</a></p><p>Direcci&oacute;n Municipal de Calidad Alimentaria</p><p>Municipalidad de Neuquén</p>";*/
 
-    $post_fields = json_encode(['address' => $address, 'subject' => $subject, 'htmlBody' => $body]);
+    $post_fields = json_encode(utf8ize(['address' => $address, 'subject' => $subject, 'htmlBody' => $body]));
 
     $uri = "https://weblogin.muninqn.gov.ar/api/Mail";
     $ch = curl_init($uri);
@@ -83,7 +83,7 @@ function enviarMailRechazado($address, $solicitante, $observaciones, $idsolicitu
 
 
     $subject = "Solicitud de Libreta Sanitaria";
-    $post_fields = json_encode(['address' => $address, 'subject' => $subject, 'htmlBody' => $body]);
+    $post_fields = json_encode(utf8ize(['address' => $address, 'subject' => $subject, 'htmlBody' => $body]));
 
     $uri = "https://weblogin.muninqn.gov.ar/api/Mail";
     $ch = curl_init($uri);
@@ -374,4 +374,60 @@ function cargarRespuestaJson($idForm, $msg): void
     $file = fopen($path . uniqid() . ".json", 'a') or die("Error creando archivo");
     fwrite($file, $msg) or die("Error escribiendo en el archivo");
     fclose($file);
+}
+
+/**
+ * Metodo utf8ize --> Permite codificar una serie de parametros a UTF-8. La funcion analiza
+ * si el parametro de entrada es un array, recorre cada uno de los elementos del mismo llamando
+ * a la propia funcion para aplicar la codificacion. Si el parametro es un string, verifica que
+ * la codificacion sea distinta a UTF-8 para luego aplicarlo a si mismo y retornar el nuevo valor.
+ * Utilizado para retornar correctamente los caracteres especiales desde la base de datos.
+ * 
+ * @param String/Array Espera un array o string
+ * @return String/Array Retorna el mismo array/string modificando la codificacion a UTF-8
+ */
+function utf8ize($param)
+{
+    if (is_array($param)) {
+        /*echo "Array: ";
+        print_r($param);
+        echo "\n\n";*/
+        foreach ($param as $unaKey => $unValor) {
+            $param[$unaKey] = utf8ize($unValor);
+        }
+    } else if (is_string($param)) {
+        //echo "Valor: $param\n";
+        if (!mb_detect_encoding($param, "UTF-8", true)) {
+            $param = utf8_encode($param);
+        }
+        return $param;
+    }
+    return $param;
+}
+
+/**
+ * Metodo deutf8ize --> Permite decodificar una serie de parametros recibidos con codificacion UTF-8. 
+ * La funcion analiza si el parametro de entrada es un array, para lo que recorre cada uno 
+ * de los elementos del mismo llamando a la propia funcion para quitar la codificacion. 
+ * Si el parametro es un string, verifica que la codificacion sea UTF-8 para luego quitarsela 
+ * y retornar el nuevo valor.
+ * Utilizado para la insercion de caracteres especiales en la base de datos, para evitar que se inserten
+ * cosas raras.
+ * 
+ * @param String/Array Espera un array o string
+ * @return String/Array Retorna el mismo array/string quitando la codificacion UTF-8
+ */
+function deutf8ize($param)
+{
+    if (is_array($param)) {
+        foreach ($param as $unaKey => $unValor) {
+            $param[$unaKey] = deutf8ize($unValor);
+        }
+    } else if (is_string($param)) {
+        if (mb_detect_encoding($param, "UTF-8", true)) {
+            $param = utf8_decode($param);
+        }
+        return $param;
+    }
+    return $param;
 }

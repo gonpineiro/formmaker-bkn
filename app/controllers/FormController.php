@@ -83,6 +83,8 @@ class FormController
                             $agregarForm = false;
                         }
                     }
+                }else{
+                    $agregarForm = false;
                 }
             }
             /*echo "agrega el form: ".($agregarForm ? "Si" : "No");

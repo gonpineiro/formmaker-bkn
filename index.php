@@ -3,9 +3,13 @@
 include('./app/config/config.php');
 if (!PROD) {
     header('Access-Control-Allow-Origin: http://localhost:3000');
+}else{
+    header('Access-Control-Allow-Origin: *');
 }
 header('Access-Control-Allow-Headers: application/json');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+//ini_set('memory_limit', '256M');
+ini_set('memory_limit', '-1');
 
 $formController = new FormController();
 
